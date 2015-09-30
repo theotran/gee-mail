@@ -1,7 +1,8 @@
-<html>
+<!--<html>
 	<head>
+		<title> Gee-Mail Application</title>
 		<script src="js/mail-generator.js"></script>
-		<link href="css/style.css" rel="stylesheet" media="screen">
+		
     <script>
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
@@ -11,8 +12,200 @@
     </script>
 	</head>
 	<body>
+		
+
+		<h1>Welcome to Gee-Mail</h1>
+		
 		<div class="container" id="main">
 			Build Me!
 		</div>
+
+		<nav>
+			<ul>
+				<li><a href="https://www.google.com/">Inbox</a></li>
+				<li><a href="https://www.google.com/">Sent Mail</a></li>
+				<li><a href="https://www.google.com/">Important</a></li>
+
+			</ul>
+
+
+		</nav>
+
+		
+
 	</body>
+</html>-->
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <title> Gee-Mail Application</title>
+    <script src="js/mail-generator.js"></script>
+    
+    <script>
+      window.onload = function(){
+        
+ 
+function generateDocument () {
+  var firstDiv = document.createElement('div')
+  firstDiv.id = 'div1'
+  document.body.appendChild(firstDiv);
+  document.getElementById('div1').innerHTML = 'testing';
+}
+generateDocument();
+
+
+function loadSubject (message) {
+
+  for(var i =0; i < message.length; i++){
+      
+      var subjects= document.createElement('div');
+      console.log(message[i].subject);
+      subjects.innerHTML = message[i].subject;
+    document.getElementById('subjectGroup').appendChild(subjects);
+ 
+  }
+
+
+
+ }      
+      
+
+loadSubject(window.geemails);
+console.log(window.geemails);
+
+
+
+function loadSender (exporter) {
+
+  for(var i =0; i < exporter.length; i++){
+      
+      var senders= document.createElement('div');
+      senders.id = 'senderGroup';
+      console.log(exporter[i].sender);
+      senders.innerHTML = exporter[i].sender;
+    document.getElementById('senderGroup').appendChild(senders);
+ 
+  }
+
+
+
+ }      
+      
+
+loadSender(window.geemails);
+
+
+function loadBody (email) {
+
+  for(var i =0; i < email.length; i++){
+      
+      var messageBody= document.createElement('div');
+      messageBody.id = 'bodyGroup';
+      console.log(email[i].body);
+      messageBody.innerHTML = email[i].body;
+    document.getElementById('bodyGroup').appendChild(messageBody);
+ ///why does this part show 'testing' when that was for div1
+ //code wouldnt work maybe it was cause .body showed blue?
+  }
+
+
+
+ }      
+      
+
+loadBody(window.geemails);
+
+
+
+
+
+};
+    </script>
+
+
+    
+  </head>
+
+  <body>
+  <header class="header">
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome to Gee-Mail.</h1>
+        <p>Communicate with friends.</p>
+        <a href="#">Learn More</a>
+      </div>
+    </div> 
+  </header>
+
+
+    <div class="nav">
+      <div class="container">
+        <ul class="pull-left">
+          <li><a href="#">Compose</a></li>
+          <li><a href="#">Inbox</a></li>
+          <li><a href="#">Sent Items</a></li>
+        </ul>
+        <ul class="pull-right">
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">Log In</a></li>
+          <li><a href="#">Help</a></li>
+        </ul>
+      </div>
+    </div>
+        
+    <div class="container2">
+        <h2>Subject:</h2>
+    
+        <div id="subjectGroup">
+            
+
+        </div>
+        <h2>Sender:</h2>
+        <div id="senderGroup">
+
+        </div>
+
+        <h2>Body:</h2>
+        <div id="bodyGroup">
+  
+        </div>
+
+    </div>
+
+
+<content>
+</content>
+    
+        
+         
+    
+      
+  
+  
+  </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
