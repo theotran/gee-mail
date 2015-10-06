@@ -22,7 +22,10 @@ function generateMessage(date){
 	message.sender = getRandomElement(sender);
 	message.body = getRandomElement(body);
 	return message;
+
 }
+
+
 
 function getRandomElement(arr){
 	return arr[Math.floor(Math.random() * arr.length)];
@@ -32,6 +35,8 @@ function getNewMessage(){
 	var now = new Date();
 	return generateMessage(now);
 }
+
+console.log(getNewMessage());
 
 function getRandomDate(){
 	var year = 2013;

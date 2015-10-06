@@ -1,40 +1,4 @@
-<!--<html>
-	<head>
-		<title> Gee-Mail Application</title>
-		<script src="js/mail-generator.js"></script>
-		
-    <script>
-      window.onload = function(){
-        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
-      };
-    </script>
-	</head>
-	<body>
-		
 
-		<h1>Welcome to Gee-Mail</h1>
-		
-		<div class="container" id="main">
-			Build Me!
-		</div>
-
-		<nav>
-			<ul>
-				<li><a href="https://www.google.com/">Inbox</a></li>
-				<li><a href="https://www.google.com/">Sent Mail</a></li>
-				<li><a href="https://www.google.com/">Important</a></li>
-
-			</ul>
-
-
-		</nav>
-
-		
-
-	</body>
-</html>-->
 
 
 
@@ -54,86 +18,170 @@
     <script>
       window.onload = function(){
         
- 
-function generateDocument () {
-  var firstDiv = document.createElement('div')
-  firstDiv.id = 'div1'
-  document.body.appendChild(firstDiv);
-  document.getElementById('div1').innerHTML = 'testing';
+
+var counter = 0;
+ var email= document.createElement('div');
+  email.id = 'emailGroup';    
+       
+
+ function loadEmail (message) {
+
+   for(var i =0; i < message.length; i++){
+      var email= document.createElement('div');
+       email.id = 'emailGroup' + ++counter;
+       
+       var dateP = document.createElement('p');
+       dateP.id = 'dateContent';
+       dateP.innerHTML = message[i].date;
+       email.appendChild(dateP);
+
+
+
+       var subjectHeader = document.createElement('h4');
+       //subjectHeader.innerHTML = "SUBJECT:";
+       var subjectP = document.createElement('p');
+       subjectP.className = 'subjectContent'; //+ ++counter;
+       subjectP.innerHTML = message[i].subject;
+       email.appendChild(subjectP);
+       document.getElementById('emailContainer').appendChild(email);
+
+       
+       var senderHeader = document.createElement('h4');
+       //senderHeader.innerHTML = "SENDER:";
+       var senderP = document.createElement('p');
+       senderP.id = 'senderContent';
+       senderP.innerHTML = message[i].sender;
+       email.appendChild(senderP);
+
+       
+
+       var bodyP = document.createElement('li');
+       bodyP.className = 'bodyContent'; //+ ++counter;
+       bodyP.innerHTML = message[i].body;
+       subjectP.appendChild(bodyP);
+
+
+
+
+       document.getElementById('emailContainer').appendChild(email);
+
+    }
+
+
+
+  }      
+      
+
+ loadEmail(window.geemails);
+
+
+//////SECOND LOAD EMAIL (SINGLE EMAIL);
+
+
+
+
+
+
+///SHOW AMOUNT OF MESSAGES IN INBOX
+
+
+
+
+
+
+
+
+///SHOW HIDDEN MESSAGE 
+
+
+var childClass = document.querySelectorAll ('.subjectContent');
+
+//for (var i=0; i < childClass.length; i++) {
+
+  //childClass[i].addEventListener('click', function(event){
+    //var secretToyClass = this.querySelectorAll('.bodyContent')[0];
+    //console.log(this);
+    //secretToyClass.className += ' show';
+
+  //})
+
+  //childClass[i].addEventListener('mouseout', function(event) {
+    //var secretToyClass= this.querySelectorAll('.bodyContent.show')[0];
+    //console.log(this);
+    //console.log(event);
+    //secretToyClass.className = 'bodyContent';
+  //})
+
+
+
+//}
+  
+///SET INTERVAL   
+function myFunction() {
+    setInterval(function(){ 
+      
+
+      var emailCont = document.getElementById('emailContainer');
+    
+    
+      console.log(counter);
+      var amount = document.getElementById('count');
+      amount.innerHTML = counter;
+    
+
+
+      var newerDiv = document.createElement('div');
+      newerDiv.id = 'emailGroup' + counter;
+      var newDateP = document.createElement('p');
+      newDateP.innerHTML = getNewMessage().date;
+      newerDiv.appendChild(newDateP);
+
+      var newSubjectP = document.createElement('p');
+      newSubjectP.className = 'subjectContent'; 
+      newSubjectP.innerHTML = getNewMessage().subject;
+      newerDiv.appendChild(newSubjectP);
+
+      newSubjectP.addEventListener('click', function(event){
+    var secretToyClass = this.querySelectorAll('.bodyContent')[0];
+    console.log(this);
+    secretToyClass.className += ' show';
+
+  })
+
+    newSubjectP.addEventListener('mouseout', function(event) {
+    var secretToyClass= this.querySelectorAll('.bodyContent.show')[0];
+    console.log(this);
+    console.log(event);
+    secretToyClass.className = 'bodyContent';
+  })
+
+      var newSenderP = document.createElement('p');
+      newSenderP.innerHTML = getNewMessage().sender;
+      newerDiv.appendChild(newSenderP);
+     
+
+       var newBodyP = document.createElement('li');
+       newBodyP.className = 'bodyContent'; //+ ++counter;
+       newBodyP.innerHTML = getNewMessage().body;
+       newSubjectP.appendChild(newBodyP);
+
+      document.getElementById('emailContainer').appendChild(newerDiv);
+
+      counter ++;
+      
+  }, 4000);
 }
-generateDocument();
 
-
-function loadSubject (message) {
-
-  for(var i =0; i < message.length; i++){
-      
-      var subjects= document.createElement('div');
-      console.log(message[i].subject);
-      subjects.innerHTML = message[i].subject;
-    document.getElementById('subjectGroup').appendChild(subjects);
- 
-  }
-
-
-
- }      
-      
-
-loadSubject(window.geemails);
-console.log(window.geemails);
-
-
-
-function loadSender (exporter) {
-
-  for(var i =0; i < exporter.length; i++){
-      
-      var senders= document.createElement('div');
-      senders.id = 'senderGroup';
-      console.log(exporter[i].sender);
-      senders.innerHTML = exporter[i].sender;
-    document.getElementById('senderGroup').appendChild(senders);
- 
-  }
-
-
-
- }      
-      
-
-loadSender(window.geemails);
-
-
-function loadBody (email) {
-
-  for(var i =0; i < email.length; i++){
-      
-      var messageBody= document.createElement('div');
-      messageBody.id = 'bodyGroup';
-      console.log(email[i].body);
-      messageBody.innerHTML = email[i].body;
-    document.getElementById('bodyGroup').appendChild(messageBody);
- ///why does this part show 'testing' when that was for div1
- //code wouldnt work maybe it was cause .body showed blue?
-  }
-
-
-
- }      
-      
-
-loadBody(window.geemails);
+myFunction(getNewMessage());
 
 
 
 
+
+/////ENDING OF JAVASCRIPT
 
 };
     </script>
-
-
-    
   </head>
 
   <body>
@@ -146,7 +194,14 @@ loadBody(window.geemails);
       </div>
     </div> 
   </header>
+    
+    <div>
+        Current Amount In Inbox:
+    </div>
 
+    <div id="count">
+          
+    </div>
 
     <div class="nav">
       <div class="container">
@@ -163,25 +218,8 @@ loadBody(window.geemails);
       </div>
     </div>
         
-    <div class="container2">
-        <h2>Subject:</h2>
-    
-        <div id="subjectGroup">
-            
-
-        </div>
-        <h2>Sender:</h2>
-        <div id="senderGroup">
-
-        </div>
-
-        <h2>Body:</h2>
-        <div id="bodyGroup">
-  
-        </div>
-
+    <div id="emailContainer">
     </div>
-
 
 <content>
 </content>

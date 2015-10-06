@@ -1,5 +1,5 @@
 .nav a {
-  color: #5a5a5a;
+  color: #F6EDA8;
   font-size: 11px;
   font-weight: bold;
   padding: 14px 10px;
@@ -39,20 +39,39 @@
 
 
 
+.bodyContent {
+  
+  display: none;
 
 
+}
 
 
+.bodyContent .show {
+  display: inline;
+  
 
 
+}
 
 
+body {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+     color: #DFF3C1; 
+    background-color: #674343;
+}
 
+#emailGroup1, #emailGroup4, #emailGroup7, #emailGroup10 {
+  background-color: #358E8E;
+}
 
+#emailGroup2, #emailGroup5, #emailGroup8 {
+  background-color: #0E6B82;
 
+}
 
-
-
-
-
-
+#emailGroup3, #emailGroup6, #emailGroup9 {
+  background-color: #213D42;
+}
