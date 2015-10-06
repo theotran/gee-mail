@@ -96,25 +96,25 @@ var counter = 0;
 
 var childClass = document.querySelectorAll ('.subjectContent');
 
-//for (var i=0; i < childClass.length; i++) {
+for (var i=0; i < childClass.length; i++) {
 
-  //childClass[i].addEventListener('click', function(event){
-    //var secretToyClass = this.querySelectorAll('.bodyContent')[0];
-    //console.log(this);
-    //secretToyClass.className += ' show';
+  childClass[i].addEventListener('click', function(event){
+    var secretToyClass = this.querySelectorAll('.bodyContent')[0];
+    console.log(this);
+    secretToyClass.className += ' show';
 
-  //})
+  })
 
-  //childClass[i].addEventListener('mouseout', function(event) {
-    //var secretToyClass= this.querySelectorAll('.bodyContent.show')[0];
-    //console.log(this);
-    //console.log(event);
-    //secretToyClass.className = 'bodyContent';
-  //})
+  childClass[i].addEventListener('mouseout', function(event) {
+    var secretToyClass= this.querySelectorAll('.bodyContent.show')[0];
+    console.log(this);
+    console.log(event);
+    secretToyClass.className = 'bodyContent';
+  })
 
 
 
-//}
+}
   
 ///SET INTERVAL   
 function myFunction() {
@@ -193,8 +193,9 @@ myFunction(getNewMessage());
         <a href="#">Learn More</a>
       </div>
     </div> 
+
   </header>
-    
+
     <div>
         Current Amount In Inbox:
     </div>
